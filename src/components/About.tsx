@@ -38,9 +38,9 @@ const About = () => {
             {/* Stats or Quick Facts */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-border/50">
               {[
-                { label: "Years Experience", value: "5+" },
-                { label: "Projects Completed", value: "50+" },
-                { label: "Happy Clients", value: "30+" },
+                { label: "Years Experience", value: "2+" },
+                { label: "Projects Completed", value: "30+" },
+                { label: "Happy Clients", value: "3+" },
                 { label: "Skills Mastered", value: "10+" },
               ].map((stat, index) => (
                 <motion.div

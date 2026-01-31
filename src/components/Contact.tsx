@@ -3,10 +3,10 @@ import { Mail, Linkedin, Twitter, Github, Instagram, ArrowUpRight } from "lucide
 
 const Contact = () => {
   const socialLinks = [
-    { name: "LinkedIn", Icon: Linkedin, href: "#" },
-    { name: "Twitter", Icon: Twitter, href: "#" },
-    { name: "GitHub", Icon: Github, href: "#" },
-    { name: "Instagram", Icon: Instagram, href: "#" },
+    { name: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/in/elmerson-lizano-61487a366/" },
+    { name: "Twitter", Icon: Twitter, href: "https://x.com/dashgotthed1" },
+    { name: "GitHub", Icon: Github, href: "https://github.com/dashguapo22" },
+    { name: "Instagram", Icon: Instagram, href: "https://www.instagram.com/elmwoww/" },
   ];
 
   return (
@@ -47,7 +47,7 @@ const Contact = () => {
           </motion.a>
 
           {/* Social Links */}
-          <motion.div
+          <motion.div             
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -58,6 +58,8 @@ const Contact = () => {
               <a
                 key={social.name}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.name}
                 className="w-12 h-12 rounded-xl glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300"
               >
@@ -91,5 +93,4 @@ const Contact = () => {
     </section>
   );
 };
-
 export default Contact;

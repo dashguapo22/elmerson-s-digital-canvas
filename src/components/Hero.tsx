@@ -23,54 +23,80 @@ const Hero = () => {
       />
 
       <div className="container relative z-10 px-6 md:px-8">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Greeting */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="section-title mb-6"
-          >
-            Creative Professional
-          </motion.p>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Profile Picture */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center lg:justify-start"
+            >
+              <div className="relative">
+                <div className="w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full overflow-hidden">
+                  <img
+                    src="/picko2.jpg"
+                    alt="Elmerson S. Lizano"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -right-6 w-8 h-8 bg-primary rounded-full animate-pulse" />
+                <div className="absolute -bottom-4 -left-6 w-6 h-6 bg-secondary rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
+              </div>
+            </motion.div>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
-          >
-            <span className="text-foreground">Elmerson S.</span>
-            <br />
-            <span className="gradient-text">Lizano</span>
-          </motion.h1>
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              {/* Greeting */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="section-title mb-6"
+              >
+                Creative Professional
+              </motion.p>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 text-balance"
-          >
-            Crafting impactful and engaging content that transforms ideas into 
-            <span className="text-foreground font-medium"> visual experiences</span>
-          </motion.p>
+              {/* Name */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-5xl md:text-7xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6"
+              >
+                <span className="text-foreground">Elmerson S.</span>
+                <br />
+                <span className="gradient-text">Lizano</span>
+              </motion.h1>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <a href="#contact" className="btn-glow">
-              Get in Touch
-            </a>
-            <a href="#about" className="btn-ghost-glow">
-              Learn More
-            </a>
-          </motion.div>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="text-lg md:text-xl lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-12 text-balance"
+              >
+                Crafting impactful and engaging content that transforms ideas into 
+                <span className="text-foreground font-medium"> visual experiences</span>
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+              >
+                <a href="#contact" className="btn-glow">
+                  Get in Touch
+                </a>
+                <a href="#about" className="btn-ghost-glow">
+                  Learn More
+                </a>
+              </motion.div>
+            </div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
