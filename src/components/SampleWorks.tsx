@@ -95,9 +95,9 @@ const SampleWorks = () => {
     },
     {
       type: "image" as const,
-      src: "/ADS.png",
-      title: "Black Friday Sale",
-      description: "Magazine layout and editorial design",
+      src: "/MatchaLatteMUD.png",
+      title: "Food Graphic Design",
+      description: "Eye catching poster design for a local event",
       className: "md:row-span-2",
     },
     {
