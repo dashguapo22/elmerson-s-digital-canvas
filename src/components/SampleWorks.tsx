@@ -101,10 +101,10 @@ const SampleWorks = () => {
       className: "md:row-span-2",
     },
     {
-      type: "video" as const,
-      src: "/EDIT4.mp4",
-      title: "Short Video",
-      description: "Original and Edited",
+      type: "image" as const,
+      src: "/matcha3D.jpg",
+      title: "3D Graphic Design",
+      description: "3D Frame-Break",
       className: "md:row-span-2",
     }
 
