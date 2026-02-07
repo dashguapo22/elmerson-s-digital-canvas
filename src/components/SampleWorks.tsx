@@ -155,7 +155,7 @@ const SampleWorks = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <a href="#contact" className="btn-glow">
+          <a href="https://elmoportfolio.my.canva.site/" target="_blank" rel="noopener noreferrer" className="btn-glow">
             View More Work
           </a>
         </motion.div>

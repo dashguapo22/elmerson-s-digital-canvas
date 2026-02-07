@@ -7,6 +7,7 @@ const Contact = () => {
     { name: "Twitter", Icon: Twitter, href: "https://x.com/dashgotthed1" },
     { name: "GitHub", Icon: Github, href: "https://github.com/dashguapo22" },
     { name: "Instagram", Icon: Instagram, href: "https://www.instagram.com/elmwoww/" },
+    { name: "View More Work", Icon: ArrowUpRight, href: "https://elmoportfolio.my.canva.site/" },
   ];
 
   return (
