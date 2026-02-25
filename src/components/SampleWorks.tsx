@@ -66,10 +66,10 @@ const SampleWork = ({ type, src, title, description, className = "", delay = 0 }
 const SampleWorks = () => {
   const sampleWorks = [
     {
-      type: "image" as const,
-      src: "/ADS.png",
-      title: "Black Friday Sale",
-      description: "Complete brand identity for a tech startup",
+      type: "video" as const,
+      src: "/TiktokNIZORAL.mp4",
+      title: "Ai Talking Object",
+      description: "Creative AI talking objects video",
       className: "md:row-span-2",
     },
     {
