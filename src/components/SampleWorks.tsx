@@ -80,10 +80,10 @@ const SampleWorks = () => {
       className: "md:row-span-2",
     },
     {
-      type: "image" as const,
-      src: "/NBA.png",
-      title: "Sports Design",
-      description: "Instagram post series for fashion brand",
+      type: "video" as const,
+      src: "/SecondEditCapcut.mp4",
+      title: "Short Video",
+      description: "Shortform Video Reels",
       className: "md:row-span-2",
     },
     {
