@@ -1,23 +1,44 @@
 import { motion } from "framer-motion";
 import { Play, Image as ImageIcon } from "lucide-react";
+import type { FocusEvent, MouseEvent } from "react";
 
 interface SampleWorkProps {
   type: "image" | "video";
   src: string;
   title: string;
   description?: string;
+  poster?: string;
   className?: string;
   delay?: number;
 }
 
-const SampleWork = ({ type, src, title, description, className = "", delay = 0 }: SampleWorkProps) => {
+const SampleWork = ({ type, src, title, description, poster, className = "", delay = 0 }: SampleWorkProps) => {
+  const playPreview = (event: MouseEvent<HTMLDivElement> | FocusEvent<HTMLDivElement>) => {
+    const video = event.currentTarget.querySelector("video");
+    video?.play().catch(() => undefined);
+  };
+
+  const pausePreview = (event: MouseEvent<HTMLDivElement> | FocusEvent<HTMLDivElement>) => {
+    const video = event.currentTarget.querySelector("video");
+
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true, margin: "-50px" }}
-      className={`group relative overflow-hidden rounded-2xl glass-card-hover cursor-pointer ${className}`}
+      onMouseEnter={playPreview}
+      onMouseLeave={pausePreview}
+      onFocus={playPreview}
+      onBlur={pausePreview}
+      tabIndex={0}
+      className={`group relative aspect-[4/5] overflow-hidden rounded-xl glass-card-hover cursor-pointer ${className}`}
     >
       <div className="h-full w-full relative overflow-hidden">
         {type === "video" ? (
@@ -26,14 +47,17 @@ const SampleWork = ({ type, src, title, description, className = "", delay = 0 }
             className="w-full h-full object-cover"
             muted
             loop
-            autoPlay
             playsInline
+            preload="metadata"
+            poster={poster}
           />
         ) : (
           <img
             src={src}
             alt={title}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         )}
 
@@ -41,21 +65,21 @@ const SampleWork = ({ type, src, title, description, className = "", delay = 0 }
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div className="text-center text-white">
             {type === "video" ? (
-              <Play className="w-12 h-12 mx-auto mb-2" />
+              <Play className="w-8 h-8 mx-auto mb-2" />
             ) : (
-              <ImageIcon className="w-12 h-12 mx-auto mb-2" />
+              <ImageIcon className="w-8 h-8 mx-auto mb-2" />
             )}
-            <h3 className="text-lg font-semibold">{title}</h3>
-            {description && <p className="text-sm opacity-80">{description}</p>}
+            <h3 className="text-sm md:text-base font-semibold">{title}</h3>
+            {description && <p className="px-3 text-xs opacity-80">{description}</p>}
           </div>
         </div>
 
         {/* Type indicator */}
-        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+        <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
           {type === "video" ? (
-            <Play className="w-4 h-4 text-white" />
+            <Play className="w-3.5 h-3.5 text-white" />
           ) : (
-            <ImageIcon className="w-4 h-4 text-white" />
+            <ImageIcon className="w-3.5 h-3.5 text-white" />
           )}
         </div>
       </div>
@@ -70,50 +94,103 @@ const SampleWorks = () => {
       src: "/TiktokNIZORAL.mp4",
       title: "Ai Talking Object",
       description: "Creative AI talking objects video",
-      className: "md:row-span-2",
     },
     {
       type: "image" as const,
       src: "/food.png",
       title: "Web Design Mockup",
       description: "Modern website design for e-commerce",
-      className: "md:row-span-2",
     },
     {
       type: "video" as const,
       src: "/SecondEditCapcut.mp4",
       title: "Short Video",
       description: "Shortform Video Reels",
-      className: "md:row-span-2",
     },
     {
       type: "video" as const,
       src: "/reels.mp4",
       title: "Short Video",
       description: "Kinetic typography logo reveal",
-      className: "md:row-span-2",
     },
     {
       type: "image" as const,
       src: "/MatchaLatteMUD.png",
       title: "Food Graphic Design",
       description: "Eye catching poster design for a local event",
-      className: "md:row-span-2",
+    },
+    {
+      type: "image" as const,
+      src: "/matcha3D.jpg",
+      title: "Matcha 3D",
+      description: "3D matcha product visual",
+    },
+    {
+      type: "image" as const,
+      src: "/Bags.jpg",
+      title: "Bags Design",
+      description: "Product-focused creative visual",
+    },
+    {
+      type: "image" as const,
+      src: "/Car.jpg",
+      title: "Car Design",
+      description: "Automotive creative visual",
+    },
+    {
+      type: "image" as const,
+      src: "/Climate Change.jpg",
+      title: "Climate Change",
+      description: "Awareness campaign graphic",
+    },
+    {
+      type: "image" as const,
+      src: "/Coffee.jpg",
+      title: "Coffee Design",
+      description: "Cafe product promotion visual",
+    },
+    {
+      type: "image" as const,
+      src: "/Nike.jpg",
+      title: "Nike Design",
+      description: "Sports brand creative visual",
+    },
+    {
+      type: "image" as const,
+      src: "/Ramen.jpg",
+      title: "Ramen Design",
+      description: "Food poster creative visual",
     },
     {
       type: "video" as const,
       src: "/0302.mp4",
       title: "Short form Video",
       description: "Inspirational short video for social media",
-      className: "md:row-span-2",
+    },
+    {
+      type: "video" as const,
+      src: "/dogfriendlyADS1.mp4",
+      title: "Dog Ad",
+      description: "Pet-friendly promotional video",
+      poster: "/dogfriendlyHOOK1S-Cover.jpg",
+    },
+    {
+      type: "video" as const,
+      src: "/dogfriendlyADS2.mp4",
+      title: "Dog Ad Variation",
+      description: "Alternate pet-friendly ad edit",
+      poster: "/dogfriendlyHOOK1S-Cover.jpg",
+    },
+    {
+      type: "video" as const,
+      src: "/Trading.mp4",
+      title: "Trading Video",
+      description: "Trading-focused social media edit",
     }
-
-
-
   ];
 
   return (
-    <section id="sample-works" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="sample-works" className="py-16 md:py-20 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-1/4 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -125,24 +202,24 @@ const SampleWorks = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <p className="section-title">Portfolio</p>
           <h2 className="section-heading">
             Sample <span className="gradient-text">Works</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
             A showcase of my creative work spanning design, motion graphics, and digital experiences
           </p>
         </motion.div>
 
         {/* Sample Works Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[300px] gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto">
           {sampleWorks.map((work, index) => (
         <SampleWork
-          key={work.title}
+          key={`${work.title}-${work.src}`}
             {...work}
-            delay={index * 0.1}
+            delay={index * 0.05}
     />
   ))}
 </div>
@@ -153,7 +230,7 @@ const SampleWorks = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-10"
         >
           <a href="https://elmoportfolio.my.canva.site/" target="_blank" rel="noopener noreferrer" className="btn-glow">
             View More Work
